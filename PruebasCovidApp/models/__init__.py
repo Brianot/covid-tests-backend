@@ -1,2 +1,3 @@
 from .user import User
-from .pruebas import Pruebas
+from .test import Test
+from .country import Country

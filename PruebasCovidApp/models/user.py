@@ -24,8 +24,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     id = models.BigAutoField(primary_key=True)
     username = models.CharField('Username', max_length= 20, unique=True)
     password = models.CharField('Password', max_length=256)
-    name = models.CharField('Nombre', max_length=50)
-    email = models.CharField('Email', max_length=100)
+    name = models.CharField('Nombres', max_length=50)
+    lastname = models.CharField('Apellidos', max_length=50)
+    age = models.IntegerField('Edad')
+    gender = models.CharField('Sexo', max_length = 15)
 
     def save(self, **kwargs):
         some_salt = 'ahckudSNFjhVlJ945fkwpx'
