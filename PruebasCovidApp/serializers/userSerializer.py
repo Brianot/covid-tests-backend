@@ -1,7 +1,6 @@
 from PruebasCovidApp.models.test import User
 from rest_framework import serializers
-
-from backend.PruebasCovidApp.models import user
+from PruebasCovidApp.models import user
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta: 
