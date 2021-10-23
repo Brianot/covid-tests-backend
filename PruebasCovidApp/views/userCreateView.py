@@ -4,14 +4,14 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from PruebasCovidApp.serializers.userSerializer import UserSerializer
 
 class UserCreateView(views.APIView):
-    def post (self, request, *args, **kwargs):
+    def post(self, request):
+        print("*"*30, 'ingreso a user')
         serializer =  UserSerializer(data = request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-
-        token_data = {"username":request.data['username'],
+        token_data = {"username": request.data['username'],
                       "password": request.data['password']}
-        token_serializer = TokenObtainPairSerializer(data= token_data)
+        token_serializer = TokenObtainPairSerializer(data = token_data)
+        print(token_serializer)
         token_serializer.is_valid(raise_exception = True)
         return Response(token_serializer.validated_data, status = status.HTTP_201_CREATED)
-
