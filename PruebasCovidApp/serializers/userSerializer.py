@@ -1,17 +1,20 @@
 from PruebasCovidApp.models.test import User
 from rest_framework import serializers
 from PruebasCovidApp.models import user
+from .testSerializer import TestSerializer
 
 class UserSerializer(serializers.ModelSerializer):
+   # tests = TestSerializer(many=True)
     class Meta: 
         model = User
-        fields = [ 'id', 'username', 'password', 'name', 'lastname', 'age', 'gender' ]
+        #fields = [ 'id', 'username', 'password', 'name', 'lastname', 'age', 'gender', 'tests']
+        fields = [ 'id', 'username', 'password', 'name', 'lastname', 'age', 'gender']
 
         def create(self, validated_data):
            userInstance = User.objects.create(**validated_data)
            return userInstance 
         
-        def to_representation (self, obj ):
+        """def to_representation (self, obj ):
             user =  User.objects.get(id = obj.id)
             return {
                 "id": user.id,
@@ -20,4 +23,4 @@ class UserSerializer(serializers.ModelSerializer):
                 "lastname": user.lastname,
                 "age": user.age,
                 "gender": user.gender
-            }
+            }"""
