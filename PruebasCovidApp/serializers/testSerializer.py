@@ -12,10 +12,11 @@ class TestSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
            testInstance = Test.objects.create(**validated_data)
            return testInstance 
+           
         
-    """  def to_representation (self, obj):
-        usuario = User.objects.get(id = obj.user)
-        pais = Country.objects.get(id = obj.country)
+    def to_representation (self, obj):
+        usuario = User.objects.get(id = obj.user.id)
+        pais = Country.objects.get(id = obj.country.id)
         test =  Test.objects.get(id = obj.id)
         
         return {
@@ -34,6 +35,5 @@ class TestSerializer(serializers.ModelSerializer):
             "country": {
                 "id": pais.id,
                 "name": pais.name
-            },
-                  
-        }"""
+            },               
+        }
